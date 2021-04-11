@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./asynccall.js"></script>
+    <script>
+          function load(){
+            let response = getProducts();
+            console.log('Received Response ' + response);
+            document.getElementById('dv').innerHTML = response;
+
+            for(let i=0;i<100;i++) {
+                document.getElementById('dv1').innerHTML += i;
+            }
+          }  
+          window.onload = load;
+    </script>
+</head>
+<body>
+    <h1>DEMO AJAX Calls</h1>
+    <div id="dv"></div>
+    <hr>
+    <div id="dv1"></div>
+
+</body>
+</html>

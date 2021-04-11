@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./dateobj.js"></script>
+    <script>
+        window.onload = function(){
+            let date = new Date();
+            document.getElementById('dv').innerHTML += "Year" + date.getFullYear() + "<br/>";
+            // month starts from 0 (Jan) 
+            document.getElementById('dv').innerHTML += "Month " + date.getMonth() + "<br/>";
+            // date starts from 0 (sunday)
+            document.getElementById('dv').innerHTML += "Day " + date.getDay() + "<br/>";
+            document.getElementById('dv').innerHTML += "Hour " + date.getHours() + "<br/>";
+            document.getElementById('dv').innerHTML += "Mis " + date.getMinutes() + "<br/>";
+            document.getElementById('dv').innerHTML += "Seconds " + date.getSeconds() + "<br/>";
+            // provide te time based on the 01-jan-1971
+            document.getElementById('dv').innerHTML += "Current Date (ES 5) " + Date.now()+ "<br/>";
+
+            // UNiversal Tie Zone Date
+            // SYnced with the Server Times
+            document.getElementById('dv').innerHTML += "UTC Year" + date.getUTCFullYear() + "<br/>";
+            // month starts from 0 (Jan) 
+            document.getElementById('dv').innerHTML += "UTC Month " + date.getUTCMonth() + "<br/>";
+            // date starts from 0 (sunday)
+            document.getElementById('dv').innerHTML += "UTC Day " + date.getUTCDay() + "<br/>";
+            document.getElementById('dv').innerHTML += "UTC Hour " + date.getUTCHours() + "<br/>";
+            document.getElementById('dv').innerHTML += "UTC Mis " + date.getUTCMinutes() + "<br/>";
+            document.getElementById('dv').innerHTML += "UTC Seconds " + date.getUTCSeconds() + "<br/>";
+
+         // set methods
+let newDate = new Date();
+newDate.setFullYear(2021,3,11)
+console.log(`Set Full Year ${newDate}`);
+newDate.setMonth(11);
+console.log(`Set new Month ${newDate}`);
+
+
+
+        }
+    </script>
+</head>
+<body>
+    <h1>The JS Date Object</h1>
+    <div id="dv"></div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./funcitonalapproach.js"></script>
+    <script>
+        function load(){
+            // define an instance of ref. function
+            let obj = new MyObject();
+            console.log(`Add = ${obj.add(10,20)}`);
+            console.log(`Data Values = ${obj.data}`);
+
+            document.getElementById('txt').addEventListener('keyup',function(){
+                // the 'this' is the scope of the element on which the current 
+                // event is subscribed. i.e. the 'text' element on which the
+                // keuyp event is subscribed
+                let val = this.value;
+                if(parseInt(val) <0) {
+                    this.style.backgroundColor = 'red';
+                } else {
+                    this.style.backgroundColor = '';
+                }
+                console.log(this.value);
+            },true);
+        };
+        window.onload = load;
+    </script>
+</head>
+<body>
+    <h1>The Function Object</h1>
+    <input type="text" id="txt">
+</body>
+</html>
