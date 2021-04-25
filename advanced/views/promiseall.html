@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./../promisenext/services.js"></script>
+    <script>
+        window.onload =  function(){
+            let catPromise = getCategories();
+            let prdPromise = getProducts();
+
+            // use Promise.all()
+
+            Promise.all([catPromise,prdPromise])
+              .then((responses)=>{ // array of Promise responses    response
+                  // iterate over each response from each promse and reolve it
+                    return Promise.all(responses.map((response)=>{
+                        return response.json();
+                    })).then((data)=>{
+                         console.log(`Received Data ${JSON.stringify(data)}`);   
+                    }).catch((error)=>{
+                        console.log(`Error ${error}`);
+                    });
+              })
+                
+        }
+
+    </script>
+</head>
+<body>
+    <h1>The Promise All</h1>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./../modules/moduleiifepattern.js"></script>
+    <script>
+        window.onload = function(){
+            console.log(`Length = ${Module.getLength('JS Module using IIFE')}`);
+            console.log(`Length = ${Module.getLength('')}`);
+            
+            console.log(`Reverse = ${Module.reverseArray([30,10,70,50])}`);
+            console.log(`Reverse = ${Module.reverseArray([])}`);
+
+        }
+    </script>
+</head>
+<body>
+    <h1>IIFE Module Pattern Implementation</h1>
+</body>
+</html>

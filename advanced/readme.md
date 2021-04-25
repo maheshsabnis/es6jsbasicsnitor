@@ -52,21 +52,87 @@
                 - let myFunction =  new Function('<IMPLEMENTATION-as-a-STRING>');         
 4. JavaScript Module Approach
     - Immediately Invoked Function Expression (IIFE)
+        - Create a scopde in IIFE
+        - (function(){.... some ... work ... here...})();
+            - The first pair of parathesis is a JS Expression parsed by browser as a single Scope Object
+                - The scope defines highly cohisive functionaionality 
+            - The second pair of  parathesis is a function invocation
+                - This is Self--Invoking finction   
     - Module Pattern with IIFE
+        - CReate a Namespace
+            - Create a object literal to define a namespace
+        - use IIFE as a Module Namespace instead of using Object Literal
+    - Using IIFE as a JS Module Pattern
+        - Syntax
+            - let module = (function(){.....})();
+                - access functions using
+                    - module.<fn1>();
+    - VERY IMP NOTE:
+        - AVOIDE DECLARING GLOBAL SCOPE VARIABLES                         
     - Module Pattern using ES 6
+        - Crrate Modules wit export and import 
+            - The 'export' is used to export the Types (class, function, consant array, constant variable) from a source js file
+            - The 'import', is used to import exported funcationality in other Js file
+        - Use the 'type' attribute of tyhe <script> to load the JS file as module 
+            - <script type="module" src="./../exportabletype.build.js"></script>   
+                - The type=module may not work across all browsers across all devices so use following solutions
+                    - USe Pure ES 6 export and import and restrict them to desktop browsers
+                    - USe Module-Loaders
+                        - systemJs
+                        - WebPack
+                        - requirejs            
 5. Object Methods
     - apply()
+        - USed to invoke a function of object by using the Object Context (name) on which it is invoked
+            - First parameters is object as mandatory parameter and the second parameter si an array that contains additional parameters rhe function or method accepts
+         - The method from the source object can be invoked for multiple different target object      
     - call()
+        - USed to invoke a function of object by using the Object Context (name) on which it is invoked 
+            - Accepts the first mandatory parameter as the object name and other parameters is an argument array defining an additional parameters to a function whihc is being invoked using 'call()'
+                - for parameters 'call()' using a JS 'arguments' array 
+        - The method from the source object can be invoked for multiple different target object         
     - bind()
+        - a method that allows to pass arguments to a function w/o invoking it.
+        - a strategic approach of encapsulating an original function by storing it's reference in other new function object
+    - the apply() or call() can be used for methodm overloading based on the liberty of parameter passed to these methods
+
 6. JavaScript Function Overloading
-7. JavaScript Optimized Functions for Speed Up execution and Memory Saving Approach (memoization)
+    - Implemented using apply()
+7. JavaScript Optimized Functions for Speed Up execution and Memory Saving 
+Approach (memoization)
+    - An optimization technique thatisnused tio speed-up function execution by storing results ofina heavy-loaded operations in a cache object and the results will be retirned from the same cache objects
+        - VERY IMP: Not a defacto standard in JS app, instead implement it explicitly as on need with Applied JS
+            - React.js and Angular have some support for Memoization
+        - Generaly used in case of Recursive operations to store results in same object (aka Cache)     
 8. Promises
     - Chaining of Promises
+        - Make FIrst Call and in success offirts call make second call and so on..
+            - Promise().then().catch();
+                - .then(), success or resolve
+                    - Promise().then().catch();
+                        - Chain of Promise Objects, creating chain explicitly as on requirments
+                - .catch(), error or rejected
+                    - Error Handling
+        - Promise().then().then().then()...catch()
+            - The first then() returns promise that is further processed by next then() in the chain.      
+                - Relying on promise object to define a chain  
+        - ES 6 have provided the 'fetch()' object that offers then Promise chaining to receive data and then process data             
     - Parallel Execution of Promises
         - Micro-Tasks 
+            - Peforming the Parallel Async or promise based operations and eveluating them at a time as Micro-Tasks (single independent execution workload) 
+        - Promise.all([Array of Promises]);
+            - The array can be max 10 promises
+        - Proise.all([]).then((responses)=>{}).catch();
+            - responses, is the return value of successfull execution of all promises
+            - VERY IMP: If any of the promise is failed the Promise.all() will return error and the catch() will be invoked        
     - Error Handling
 9. Async / Await
-    - Async Generators         
+    - Async Generators       
+        - Generators
+            - the * marked function used to iterate over the sequence and return each entry from sequence and move to next till the sequence does not end or reached to last record in sequence
+        - if the generator function is performing long running executions (e.g. AJAX / promise based calles) then use the generator function async generator, means mark the generatr function as async
+            - This is used by redux-saga for REST API calls in React-Redux apps
+            - USed in NGRX for Effects (aka AJAX calls)       
 
 
 # Hands-On-Labs
@@ -84,3 +150,17 @@ Perform the following operations on this Map
         - EmpNo must be + ve integer
         - EmpName must starts from UpperCase character and must have Characters
         - Salary must be +ve integer  
+
+# Date 25-April-2021
+
+1. Define an overloaded search() method forsearching record on any collection (array/map/set) based on parameter(s) passed to search() method
+    - e.g. if collection is of Employees wtih EmpNo, EMpName, Designation, Salary, Experience, DeptName
+        then the search() may acept following parameters
+            - search(DepName="" || Designation = "")
+                search(dname, or, designation)
+            - search(DepName="" && Designation = "")  
+                - search(dname, and, designation)
+            - search(from sal, to sal)
+            - search(ename)
+            - search(dname)
+            - search(designation)    
